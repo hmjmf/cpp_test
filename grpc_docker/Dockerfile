@@ -1,5 +1,5 @@
 # 使用官方 C++ grpc 基础镜像
-FROM twistedbytes/centos9-stream:latest
+FROM index.docker.io/twistedbytes/centos9-stream:latest
 
 # 设置工作目录
 

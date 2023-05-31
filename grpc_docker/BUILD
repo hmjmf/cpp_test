@@ -49,12 +49,19 @@ cc_binary(
     ],
 )
 
+# container_image(
+#     name = "hellosvr_server_image",
+#     # References container_pull from WORKSPACE (above)
+#     base = "@official_ubuntu//image",
+#     files = ["//grpc_docker:hellosvr_server"],
+#     cmd = ["./hellosvr_server"]
+# )
+
 container_image(
     name = "hellosvr_server_image",
-    # References container_pull from WORKSPACE (above)
-    base = "@official_ubuntu//image",
-    files = ["//grpc_docker:hellosvr_server"],
-    cmd = ["./hellosvr_server"]
+    base = "@centos9-stream//image",
+    cmd = ["./hellosvr_server"],
+    files = [":hellosvr_server"],
 )
 
 cc_image(

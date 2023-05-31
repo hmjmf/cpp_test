@@ -1,13 +1,13 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-# git_repository(
-#     name = "bazel_toolchains",
-#     remote = "https://github.com/bazelbuild/bazel-toolchains.git",
-#     tag = "v5.1.2",
-# )
-# load("@bazel_toolchains//repositories:repositories.bzl", bazel_toolchains_repositories = "repositories")
-# bazel_toolchains_repositories()
+git_repository(
+    name = "bazel_toolchains",
+    remote = "https://github.com/bazelbuild/bazel-toolchains.git",
+    tag = "v5.1.2",
+)
+load("@bazel_toolchains//repositories:repositories.bzl", bazel_toolchains_repositories = "repositories")
+bazel_toolchains_repositories()
 
 git_repository(
     name = "com_github_grpc_grpc",
@@ -32,15 +32,16 @@ container_repositories()
 
 load("@io_bazel_rules_docker//container:pull.bzl", "container_pull")
 
-container_pull(
-  name = "official_ubuntu",
-    registry = "index.docker.io",
-    repository = "library/ubuntu",
-    tag = "14.04",
-)
-
 load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
 container_deps()
 
 load("@io_bazel_rules_docker//cc:image.bzl", _cc_image_repos = "repositories",)
 _cc_image_repos()
+
+
+container_pull(
+    name = "centos9-stream",
+    registry = "index.docker.io",
+    repository = "twistedbytes/centos9-stream",
+    tag = "latest",
+)

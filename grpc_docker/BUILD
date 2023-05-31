@@ -2,6 +2,7 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
 load("@com_github_grpc_grpc//bazel:grpc_build_system.bzl", "grpc_proto_library")
 load("@io_bazel_rules_docker//container:container.bzl", "container_image")
+load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -50,9 +51,13 @@ cc_binary(
 
 container_image(
     name = "hellosvr_server_image",
+    # References container_pull from WORKSPACE (above)
     base = "@official_ubuntu//image",
-    dockerfile = "Dockerfile",
-    files = [
-        "app",
-    ],
+    files = ["//grpc_docker:hellosvr_server"],
+    cmd = ["./hellosvr_server"]
+)
+
+cc_image(
+    name = "cc_image2",
+    binary = ":hellosvr_server",
 )

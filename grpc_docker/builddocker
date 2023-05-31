@@ -1,0 +1,2 @@
+cp /home/zqx/code/cpp_test/grpc_docker/bazel-bin/hellosvr_server .
+docker build -t hellosvr_server .

@@ -1,2 +1,1 @@
-cp /home/zqx/code/cpp_test/grpc_docker/bazel-bin/hellosvr_server .
-docker build -t hellosvr_server .
+bb hellosvr_server && chmod 777 bazel-bin/hellosvr_server && cp bazel-bin/hellosvr_server . && docker build . -t hellosvr && docker run -p 50051:50051 hellosvr

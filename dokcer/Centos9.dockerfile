@@ -1,0 +1,1 @@
+FROM index.docker.io/twistedbytes/centos9-stream:latest

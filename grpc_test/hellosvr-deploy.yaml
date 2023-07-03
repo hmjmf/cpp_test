@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hellosvr
+  name: hellosvr
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hellosvr
+  template:
+    metadata:
+      labels:
+        app: hellosvr
+    spec:
+      containers:
+      - name: hellosvr
+        image: ccr.ccs.tencentyun.com/hmjmf/hellosvr_server:latest
+        ports:
+        - containerPort: 50051

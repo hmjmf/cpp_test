@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:  
+  name: hellosvrclient
+spec:  
+  template:    
+    metadata:      
+      name: hellosvrclient    
+    spec:      
+      containers:      
+      - name: hellosvrclient      
+        image: ccr.ccs.tencentyun.com/hmjmf/hellosvr_client    
+        command: ["./hellosvr_client"]      
+      restartPolicy: Never

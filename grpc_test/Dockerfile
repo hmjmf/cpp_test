@@ -6,5 +6,4 @@ COPY ./hellosvr_server /app/
 
 WORKDIR /app
 
-
-# CMD ["./hellosvr_server"]
+CMD ["./hellosvr_server"]

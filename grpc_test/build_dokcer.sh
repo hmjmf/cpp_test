@@ -4,6 +4,7 @@ BIN_NAME=hellosvr_server
 echo "DIR_PATH: ${DIR_PATH}"
 echo "DIR_NAME: ${DIR_NAME}"
 echo "BIN_NAME: ${BIN_NAME}"
+docker pull ccr.ccs.tencentyun.com/hmjmf/bazelbuild:latest
 docker run -v ${DIR_PATH}:/tmp/${DIR_NAME} -w /tmp/${DIR_NAME} ccr.ccs.tencentyun.com/hmjmf/bazelbuild:latest /bin/sh -c "/bazel build ${BIN_NAME} && cp bazel-bin/${BIN_NAME} ." && \
 docker build -t ccr.ccs.tencentyun.com/hmjmf/${BIN_NAME} ${DIR_PATH} &&
 docker push ccr.ccs.tencentyun.com/hmjmf/${BIN_NAME}

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hellosvr-config
+data:
+  respmsg: fuck233
+  port: "50051"

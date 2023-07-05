@@ -4,4 +4,7 @@ docker build -t ccr.ccs.tencentyun.com/hmjmf/hellosvr_client -f hellosvr_client.
 kubectl apply -f hellosvr-client-job.yaml 
 kubectl get job
 kubectl get pod
-kubectl log hellosvrclient-ghm7t
+pods=$(kubectl get pods | grep hellosvrclient | awk '{print $1}')
+echo $pods
+kubectl log $pods
+kubectl delete job hellosvrclient

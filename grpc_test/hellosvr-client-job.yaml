@@ -5,7 +5,7 @@ metadata:
 spec:  
   template:    
     metadata:      
-      name: hellosvrclient    
+      name: hellosvrclient
     spec:      
       containers:      
       - name: hellosvrclient      

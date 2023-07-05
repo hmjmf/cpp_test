@@ -9,7 +9,7 @@
 
 #include "hellosvr.grpc.pb.h"
 
-ABSL_FLAG(std::string, target, "hellosvr:50051", "Server address");
+ABSL_FLAG(std::string, target, "192.168.122.1:30000", "Server address");
 
 using grpc::Channel;
 using grpc::ClientContext;

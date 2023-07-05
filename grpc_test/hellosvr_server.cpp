@@ -1,6 +1,8 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "absl/flags/flag.h"
 #include "absl/flags/parse.h"
@@ -12,19 +14,21 @@
 
 #include "hellosvr.grpc.pb.h"
 
-
 using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
 
-ABSL_FLAG(uint16_t, port, 50051, "Server port for the service");
+ABSL_FLAG(uint16_t, port, 30000, "Server port for the service");
 
 // Logic and data behind the server's behavior.
 class HelloSvrImpl final : public HelloSvr::HelloSvr::Service {
   Status SayHello(ServerContext* context, const HelloSvr::SayHelloReq* request,
                   HelloSvr::SayHelloResp* reply) override {
-    std::string prefix("Hello ");
+    char* pathvar;
+    pathvar = getenv("respmsg");
+    std::string prefix("Hello233 ");
+    prefix += pathvar;
     reply->set_message(prefix + request->name());
     return Status::OK;
   }

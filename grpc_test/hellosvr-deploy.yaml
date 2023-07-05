@@ -18,4 +18,15 @@ spec:
       - name: hellosvr
         image: ccr.ccs.tencentyun.com/hmjmf/hellosvr_server:latest
         ports:
-        - containerPort: 50051
+        - containerPort: 30000
+        env:
+        - name: respmsg
+          valueFrom:
+            configMapKeyRef:
+              name: hellosvr-config
+              key: respmsg
+        - name: port
+          valueFrom:
+            configMapKeyRef:
+              name: hellosvr-config
+              key: port

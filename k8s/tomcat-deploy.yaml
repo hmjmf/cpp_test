@@ -1,10 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: tomcat
-    env: fucker
-  name: tomcat
+  name: tomcat-deployment
 spec:
   replicas: 1
   selector:
@@ -17,9 +14,6 @@ spec:
     spec:
       containers:
       - name: tomcat
-        image: kubeguide/tomcat-app:v1
+        image: tomcat:latest
         ports:
         - containerPort: 8080
-        env:
-        - name: MYSQL_SERVICE_HOST
-          value: "10.96.236.86"

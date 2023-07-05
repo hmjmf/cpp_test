@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-config
+data:
+  fuckkey: fuckvalue
+  fuckkey2: fuckvalue2
